@@ -7,9 +7,8 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  // Commented out for local development - uncomment and update for GitHub Pages deployment
-  // site: 'https://your-username.github.io',
-  // base: '/sac-website',
+  site: 'https://bredesen-center-sac.github.io',
+  base: '/sac-website',
   vite: {
     plugins: [tailwindcss()]
   },
