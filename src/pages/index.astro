@@ -1,34 +1,136 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Button } from '../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 import Calendar from '../components/Calendar';
 ---
 
-<Layout title="SAC Website">
-	<main class="container mx-auto px-4 py-8">
-		<div class="mb-8">
-			<h1 class="text-4xl font-bold mb-4">Welcome to SAC Website</h1>
-			<p class="text-lg text-muted-foreground mb-6">
-				This website is built with Astro, shadcn/ui, and FullCalendar.
-			</p>
-			
-			<div class="flex gap-4 mb-8">
-				<Button>Primary Button</Button>
-				<Button variant="outline">Outline Button</Button>
-				<Button variant="secondary">Secondary Button</Button>
+<Layout title="Home" description="Student Advisory Council - University of Tennessee - Advocating for student needs and fostering campus community">
+	<div class="min-h-screen">
+		<!-- Hero Section -->
+		<section class="bg-gradient-to-b from-ut-orange/10 to-background py-16">
+			<div class="container mx-auto px-4">
+				<div class="text-center max-w-4xl mx-auto">
+					<h1 class="text-5xl font-bold text-ut-smokey mb-6">
+						Student Advisory Council
+					</h1>
+					<p class="text-xl text-muted-foreground mb-8">
+						Advocating for student needs, fostering campus community, and bridging the gap between students and administration at the University of Tennessee.
+					</p>
+					<div class="flex gap-4 justify-center flex-wrap">
+						<Button size="lg" class="bg-ut-orange hover:bg-ut-orange/90">
+							Get Involved
+						</Button>
+						<Button variant="outline" size="lg">
+							View Resources
+						</Button>
+					</div>
+				</div>
 			</div>
-		</div>
+		</section>
 
-		<div class="mb-8">
-			<h2 class="text-2xl font-semibold mb-4">Calendar</h2>
-			<div class="border rounded-lg p-4">
-				<Calendar 
-					client:load
-					height="600px"
-					googleCalendarApiKey="AIzaSyCutPVdAlvEHx0dzyso_KvlAFOBWPcl_Lg"
-					googleCalendarId="58d04a8dd8bc1e89d83247e91dc4b3d39f75f8a94796b030fb751d2eed663532@group.calendar.google.com"
-				/>
+		<!-- What We Do Section -->
+		<section class="py-16">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-bold text-center mb-12 text-ut-smokey">What We Do</h2>
+				<div class="grid md:grid-cols-3 gap-6">
+					<Card>
+						<CardHeader>
+							<CardTitle class="text-ut-orange">Student Advocacy</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>
+								We represent student voices in university decision-making processes and work to address concerns that affect campus life.
+							</CardDescription>
+						</CardContent>
+					</Card>
+					
+					<Card>
+						<CardHeader>
+							<CardTitle class="text-ut-orange">Resource Connection</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>
+								Connecting students with academic support, mental health resources, financial aid, and campus services.
+							</CardDescription>
+						</CardContent>
+					</Card>
+					
+					<Card>
+						<CardHeader>
+							<CardTitle class="text-ut-orange">Community Building</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>
+								Organizing events, facilitating discussions, and creating opportunities for student engagement across campus.
+							</CardDescription>
+						</CardContent>
+					</Card>
+				</div>
 			</div>
-		</div>
-	</main>
+		</section>
+
+		<!-- Calendar Section -->
+		<section class="py-16 bg-muted/30">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-bold text-center mb-8 text-ut-smokey">Upcoming Events</h2>
+				<div class="max-w-6xl mx-auto">
+					<Card>
+						<CardContent class="p-6">
+							<Calendar 
+								client:load
+								height="600px"
+								googleCalendarApiKey="AIzaSyCutPVdAlvEHx0dzyso_KvlAFOBWPcl_Lg"
+								googleCalendarId="58d04a8dd8bc1e89d83247e91dc4b3d39f75f8a94796b030fb751d2eed663532@group.calendar.google.com"
+							/>
+						</CardContent>
+					</Card>
+				</div>
+			</div>
+		</section>
+
+		<!-- Quick Links Section -->
+		<section class="py-16">
+			<div class="container mx-auto px-4">
+				<h2 class="text-3xl font-bold text-center mb-12 text-ut-smokey">Quick Access</h2>
+				<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+					<Card class="hover:shadow-lg transition-shadow cursor-pointer">
+						<CardHeader>
+							<CardTitle class="text-lg">Emergency Resources</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>Crisis support and urgent assistance</CardDescription>
+						</CardContent>
+					</Card>
+					
+					<Card class="hover:shadow-lg transition-shadow cursor-pointer">
+						<CardHeader>
+							<CardTitle class="text-lg">Academic Support</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>Tutoring and study assistance</CardDescription>
+						</CardContent>
+					</Card>
+					
+					<Card class="hover:shadow-lg transition-shadow cursor-pointer">
+						<CardHeader>
+							<CardTitle class="text-lg">Mental Health</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>Counseling and wellness services</CardDescription>
+						</CardContent>
+					</Card>
+					
+					<Card class="hover:shadow-lg transition-shadow cursor-pointer">
+						<CardHeader>
+							<CardTitle class="text-lg">Contact SAC</CardTitle>
+						</CardHeader>
+						<CardContent>
+							<CardDescription>Get in touch with council members</CardDescription>
+						</CardContent>
+					</Card>
+				</div>
+			</div>
+		</section>
+	</div>
 </Layout>

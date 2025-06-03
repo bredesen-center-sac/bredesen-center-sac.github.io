@@ -1,0 +1,198 @@
+import Layout from '../layouts/Layout.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
+import { Button } from '../components/ui/button';
+import { Separator } from '../components/ui/separator';
+
+// Sample council members data
+const councilMembers = [
+  {
+    name: "Sarah Johnson",
+    position: "President",
+    year: "Senior",
+    major: "Political Science",
+    email: "sjohnson@utk.edu",
+    bio: "Passionate about student advocacy and creating positive change on campus. Focuses on mental health initiatives and academic policy reform.",
+    initials: "SJ"
+  },
+  {
+    name: "Marcus Chen",
+    position: "Vice President",
+    year: "Junior",
+    major: "Engineering",
+    email: "mchen@utk.edu",
+    bio: "Dedicated to improving campus infrastructure and academic resources. Leads initiatives for STEM student support.",
+    initials: "MC"
+  },
+  {
+    name: "Emma Rodriguez",
+    position: "Secretary",
+    year: "Sophomore",
+    major: "Communications",
+    email: "erodriguez@utk.edu",
+    bio: "Focuses on improving communication between students and administration. Champions diversity and inclusion initiatives.",
+    initials: "ER"
+  },
+  {
+    name: "David Kim",
+    position: "Treasurer",
+    year: "Junior",
+    major: "Business Administration",
+    email: "dkim@utk.edu",
+    bio: "Manages council finances and student fee allocation. Works on financial literacy programs for students.",
+    initials: "DK"
+  },
+  {
+    name: "Ashley Thompson",
+    position: "Academic Affairs Representative",
+    year: "Senior",
+    major: "Education",
+    email: "athompson@utk.edu",
+    bio: "Advocates for academic policy improvements and student academic rights. Coordinates tutoring and academic support programs.",
+    initials: "AT"
+  },
+  {
+    name: "Jordan Martinez",
+    position: "Student Life Representative",
+    year: "Sophomore",
+    major: "Psychology",
+    email: "jmartinez@utk.edu",
+    bio: "Works to enhance campus life and student engagement. Organizes events and social activities for the student body.",
+    initials: "JM"
+  },
+  {
+    name: "Taylor Williams",
+    position: "Outreach Coordinator",
+    year: "Junior",
+    major: "Social Work",
+    email: "twilliams@utk.edu",
+    bio: "Connects students with community resources and campus services. Leads volunteer and service learning initiatives.",
+    initials: "TW"
+  },
+  {
+    name: "Alex Parker",
+    position: "First-Year Representative",
+    year: "Freshman",
+    major: "Undecided",
+    email: "aparker@utk.edu",
+    bio: "Represents the voice of incoming students and helps with transition programs. Focuses on first-year student experience.",
+    initials: "AP"
+  }
+];
+
+const executiveBoard = councilMembers.slice(0, 4);
+const representatives = councilMembers.slice(4);
+
+<Layout title="Council Members" description="Meet the Student Advisory Council members representing your voice at the University of Tennessee">
+  <div class="min-h-screen py-16">
+    <div class="container mx-auto px-4">
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-ut-smokey mb-4">Meet Your Council</h1>
+        <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+          The Student Advisory Council is composed of dedicated students who work tirelessly to represent your interests and improve campus life at the University of Tennessee.
+        </p>
+      </div>
+
+      <!-- Executive Board -->
+      <section class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-ut-smokey mb-4">Executive Board</h2>
+          <p class="text-muted-foreground">
+            The leadership team guiding our council's mission and initiatives.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {executiveBoard.map((member) => (
+            <Card class="hover:shadow-lg transition-shadow">
+              <CardHeader class="text-center">
+                <Avatar class="mx-auto mb-4 w-20 h-20">
+                  <AvatarImage src="" alt={member.name} />
+                  <AvatarFallback class="bg-ut-orange text-white text-lg font-semibold">
+                    {member.initials}
+                  </AvatarFallback>
+                </Avatar>
+                <CardTitle class="text-ut-smokey">{member.name}</CardTitle>
+                <CardDescription class="text-ut-orange font-semibold">
+                  {member.position}
+                </CardDescription>
+                <div class="text-sm text-muted-foreground">
+                  <p>{member.year} • {member.major}</p>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p class="text-sm text-muted-foreground mb-4">{member.bio}</p>
+                <Button variant="outline" size="sm" class="w-full">
+                  Contact {member.name.split(' ')[0]}
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <Separator class="my-12" />
+
+      <!-- Representatives -->
+      <section>
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-ut-smokey mb-4">Council Representatives</h2>
+          <p class="text-muted-foreground">
+            Specialized representatives working on specific areas of student life and advocacy.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {representatives.map((member) => (
+            <Card class="hover:shadow-lg transition-shadow">
+              <CardHeader class="text-center">
+                <Avatar class="mx-auto mb-4 w-16 h-16">
+                  <AvatarImage src="" alt={member.name} />
+                  <AvatarFallback class="bg-ut-orange text-white font-semibold">
+                    {member.initials}
+                  </AvatarFallback>
+                </Avatar>
+                <CardTitle class="text-ut-smokey text-lg">{member.name}</CardTitle>
+                <CardDescription class="text-ut-orange font-semibold">
+                  {member.position}
+                </CardDescription>
+                <div class="text-sm text-muted-foreground">
+                  <p>{member.year} • {member.major}</p>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p class="text-sm text-muted-foreground mb-4">{member.bio}</p>
+                <Button variant="outline" size="sm" class="w-full">
+                  Contact {member.name.split(' ')[0]}
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      <!-- Get Involved Section -->
+      <section class="mt-16 text-center">
+        <Card class="bg-gradient-to-r from-ut-orange/10 to-background p-8">
+          <CardHeader>
+            <CardTitle class="text-2xl text-ut-smokey">Interested in Joining SAC?</CardTitle>
+            <CardDescription class="text-lg">
+              We're always looking for passionate students to join our team and make a difference on campus.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div class="flex gap-4 justify-center flex-wrap">
+              <Button size="lg" class="bg-ut-orange hover:bg-ut-orange/90">
+                Apply Now
+              </Button>
+              <Button variant="outline" size="lg">
+                Learn More
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+    </div>
+  </div>
+</Layout> 

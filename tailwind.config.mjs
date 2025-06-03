@@ -6,6 +6,12 @@ export default {
   theme: {
     extend: {
       colors: {
+        // UT Brand Colors
+        'ut-orange': '#FF8200',
+        'ut-white': '#FFFFFF',
+        'ut-smokey': '#4B4B4B',
+        
+        // Theme Colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
