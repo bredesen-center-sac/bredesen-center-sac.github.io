@@ -12,14 +12,14 @@ import { cn } from "@/lib/utils"
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Academic Support",
-    href: "/resources/academic",
-    description: "Tutoring, study groups, and academic assistance programs."
+    title: "PhD Timeline",
+    href: "/resources/phd-timeline",
+    description: "A guide to the Bredesen Center PhD journey milestones."
   },
   {
-    title: "Mental Health & Wellness",
+    title: "Health & Wellness",
     href: "/resources/wellness",
-    description: "Counseling services, wellness programs, and mental health resources."
+    description: "Student health services, insurance, and wellness programs."
   },
   {
     title: "Financial Aid",
@@ -37,17 +37,18 @@ const components: { title: string; href: string; description: string }[] = [
     description: "Dining, housing, transportation, and other campus facilities."
   },
   {
-    title: "Emergency Resources",
-    href: "/resources/emergency",
-    description: "Emergency contacts, crisis support, and urgent assistance."
+    title: "International Student Resources",
+    href: "/resources/international",
+    description: "Support, services, and information for international students."
   }
 ]
 
 export function SiteNavigation() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center">
-        <div className="mr-4 flex">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
+      {/* Left and Center Group: Logo/Title and Main Navigation */}
+      <div className="flex items-center">
+        <div className="mr-4 flex"> {/* Original Logo and Site Title Container */}
           <a className="mr-6 flex items-center space-x-2" href="/">
             <div className="h-6 w-6 rounded bg-ut-orange"></div>
             <span className="hidden font-bold sm:inline-block text-ut-smokey">
@@ -107,20 +108,18 @@ export function SiteNavigation() {
             
           </NavigationMenuList>
         </NavigationMenu>
-        
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            {/* University of Tennessee branding */}
-            <a 
-              href="https://www.utk.edu" 
-              className="text-sm text-ut-smokey hover:text-ut-orange transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              University of Tennessee
-            </a>
-          </div>
-        </div>
+      </div>
+      
+      {/* Right Group: University of Tennessee Link */}
+      <div className="flex items-center">
+        <a 
+          href="https://www.utk.edu" 
+          className="text-sm text-ut-smokey hover:text-ut-orange transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          University of Tennessee
+        </a>
       </div>
     </header>
   )

@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { WellnessPageLayout } from '../../components/WellnessPageLayout'; // Import the new layout component
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; // CardDescription might not be used if titles are direct
+import { Separator } from '@/components/ui/separator';
+---
+
+<Layout title="Health & Wellness Resources" description="Comprehensive health and wellness information for students.">
+  <div class="container mx-auto px-4 py-10">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold text-gray-900">Health & Wellness</h1>
+      <p class="text-xl text-gray-600 mt-2">Your guide to student health services and insurance.</p>
+    </header>
+
+    <WellnessPageLayout client:load>
+      {/* All Cards are now children of WellnessPageLayout */}
+      <Card id="shc-location-hours">
+        <CardHeader><CardTitle>SHC: Location & Hours</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p><strong>Location:</strong> 1800 Volunteer Boulevard</p>
+          <p><strong>Health Center Hours:</strong> M, Tu, Th, F: 8 AM-5 PM; W: 9 AM-5 PM</p>
+          <p><strong>Pharmacy Hours:</strong> M, Tu, Th, F: 8:30 AM-5 PM; W: 9 AM-5 PM</p>
+          <p><strong>After-Hours Care:</strong> UT Medical Center ER (show UT ID + insurance card for student pricing)</p>
+        </CardContent>
+      </Card>
+
+      <Card id="shc-services">
+        <CardHeader><CardTitle>SHC: Services Provided</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-1">
+          <p>General, mental, and women's health</p>
+          <p>Allergy, immunizations, physicals</p>
+          <p>Telemedicine, labs, x-rays, pharmacy</p>
+          <p>PT, sports medicine, travel, and surgery clinics</p>
+          <p>Referrals to external providers as needed</p>
+        </CardContent>
+      </Card>
+
+      <Card id="shc-appointments">
+        <CardHeader><CardTitle>SHC: Appointments & Contact</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>By appointment only — call early for same-day slots.</p>
+          <p>Walk-ins discouraged.</p>
+          <p><strong>Main line:</strong> <a href="tel:8659745080" class="text-ut-orange hover:underline">(865) 974-5080</a></p>
+          <p><strong>Sports Medicine/PT:</strong> <a href="tel:8659745663" class="text-ut-orange hover:underline">(865) 974-5663</a></p>
+        </CardContent>
+      </Card>
+
+      <Card id="shc-portal">
+        <CardHeader><CardTitle>SHC: Patient Portal</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>Access secure messages, upload/view immunization records, and complete appointment forms.</p>
+          <p>Requires UT NetID and password.</p>
+          <p><a href="https://utknoxville.medicatconnect.com/home.aspx" target="_blank" rel="noopener noreferrer" class="text-ut-orange hover:underline">Go to Patient Portal</a></p>
+        </CardContent>
+      </Card>
+
+      <Card id="shc-costs">
+        <CardHeader><CardTitle>SHC: Health Center Costs</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>Visits are included with student fees.</p>
+          <p>Nominal charges apply for: labs, immunizations, injections, x-rays, PT, and supplies.</p>
+          <p>Charges go to your Bursar account unless enrolled in UT-sponsored insurance, which covers most services at 100%.</p>
+        </CardContent>
+      </Card>
+
+      <Card id="shc-pharmacy">
+        <CardHeader><CardTitle>SHC: Pharmacy Services</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>Accepts most insurances.</p>
+          <p>Offers vaccines (COVID-19, flu, MMR, Hep B, etc.).</p>
+          <p><strong>Phone:</strong> <a href="tel:8659745932" class="text-ut-orange hover:underline">(865) 974-5932</a></p>
+        </CardContent>
+      </Card>
+
+      <Separator />
+
+      <Card id="insurance-overview">
+        <CardHeader><CardTitle>Insurance: Overview</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p><strong>Provider:</strong> UnitedHealthcare StudentResources</p>
+          <p><strong>Primary Care:</strong> UT SHC providers (mandatory for most care)</p>
+        </CardContent>
+      </Card>
+
+      <Card id="insurance-referrals">
+        <CardHeader><CardTitle>Insurance: Referrals</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>Referrals are required for off-campus care unless:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Emergency</li>
+            <li>Mental health</li>
+            <li>Over 50 miles away from SHC</li>
+            <li>Maternity/GYN services</li>
+            <li>UT SHC is closed</li>
+          </ul>
+          <p>Off-campus visits are subject to deductible, co-pay, and coinsurance.</p>
+        </CardContent>
+      </Card>
+
+      <Card id="insurance-eligibility">
+        <CardHeader><CardTitle>Insurance: Eligibility</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>Students must be:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Enrolled in 3+ grad or 6+ undergrad credit hours (with at least 1 on-campus hour)</li>
+            <li>Degree-seeking</li>
+            <li>Attending for 31 days from insurance start date</li>
+          </ul>
+          <p><strong>International students:</strong> Automatically enrolled and charged.</p>
+          <p><strong>Domestic GA/GRA/GTA students:</strong> Automatically enrolled if 25%+ appointment.</p>
+        </CardContent>
+      </Card>
+
+      <Card id="insurance-enrollment">
+        <CardHeader><CardTitle>Insurance: Enrollment & Coverage</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p><strong>GA/GRA/GTA Plan:</strong> Enrollment by SHC; department pays premium if 25%+ appointed. Coverage is from the first to the last month of employment.</p>
+          <p><strong>Dependent, Dental, Vision Insurance:</strong> Only available during open enrollment or with qualifying life events. Enroll via The Hildreth Agency: <a href="https://www.studenthealthprograms.com" target="_blank" rel="noopener noreferrer" class="text-ut-orange hover:underline">studenthealthprograms.com</a></p>
+          <p><strong>Open Enrollment Periods:</strong></p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Fall: August 1 - September 20</li>
+            <li>Spring/Summer: January 1 - January 31</li>
+            <li>Summer: May 1 - May 31</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card id="insurance-graduation">
+        <CardHeader><CardTitle>Insurance: Graduation & Employment Changes</CardTitle></CardHeader>
+        <CardContent className="text-gray-700">
+          <p>Notify SHC within 30 days of graduation or job status changes. Coverage may continue if self-paid post-graduation.</p>
+        </CardContent>
+      </Card>
+      
+      <Separator />
+
+      <Card id="chew">
+        <CardHeader><CardTitle>Center for Health Education & Wellness (CHEW)</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p>
+            The Center for Health Education and Wellness empowers all Volunteers to thrive by cultivating personal and community well-being.
+            Visit their website: <a href="https://wellness.utk.edu/" target="_blank" rel="noopener noreferrer" class="text-ut-orange hover:underline">wellness.utk.edu</a>
+          </p>
+          <p><strong>Phone:</strong> <a href="tel:8659745725" class="text-ut-orange hover:underline">865-974-5725</a></p>
+          <p><strong>974-HELP Referral Line:</strong> For distressed or distressing students to help them reach academic goals and maintain a safe community. (<a href="tel:8659744357" class="text-ut-orange hover:underline">865-974-HELP</a>)</p>
+          <p><strong>Services include:</strong></p>
+          <ul class="list-disc list-inside ml-4 space-y-1">
+            <li>Alcohol and drug education classes</li>
+            <li>Health education programs</li>
+            <li>VOLS 2 VOLS (peer health educators)</li>
+            <li>Sexual Assault Response Team (SART)</li>
+            <li>Sexual assault, domestic and dating violence, and stalking support</li>
+            <li>Bystander awareness programming: Volunteers Speak UP! (RSVP & Alcohol Edition)</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      <Card id="best-practices">
+        <CardHeader><CardTitle>Best Practices</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-1">
+          <p>Carry your insurance ID to all visits.</p>
+          <p>Know your plan, preferred providers, and referral policies.</p>
+          <p>Review Explanation of Benefits (EOBs).</p>
+          <p>Contact UHCSR for claims or coverage questions.</p>
+        </CardContent>
+      </Card>
+
+      <Card id="contact-information">
+        <CardHeader><CardTitle>Contact Information</CardTitle></CardHeader>
+        <CardContent className="text-gray-700 space-y-2">
+          <p><strong>Yolanda McCaffrey:</strong> <a href="tel:8659742337" class="text-ut-orange hover:underline">(865) 974-2337</a> | <a href="mailto:ymccaffrey@utk.edu" class="text-ut-orange hover:underline">ymccaffrey@utk.edu</a></p>
+          <p><strong>Sara Dunphy:</strong> <a href="tel:8659746147" class="text-ut-orange hover:underline">(865) 974-6147</a> | <a href="mailto:sdunphy2@utk.edu" class="text-ut-orange hover:underline">sdunphy2@utk.edu</a></p>
+          <p><strong>Hildreth Agency:</strong> <a href="tel:8656914652" class="text-ut-orange hover:underline">(865) 691-4652</a> | <a href="mailto:studenthealth@hildrethins.com" class="text-ut-orange hover:underline">studenthealth@hildrethins.com</a></p>
+        </CardContent>
+      </Card>
+    </WellnessPageLayout>
+  </div>
+</Layout> 

@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { PhdTimelineDisplay } from '../../components/PhdTimelineDisplay';
+import { Card } from '@/components/ui/card'; // Using Card for consistent page structure
+---
+
+<Layout 
+  title="PhD Timeline" 
+  description="A general timeline and milestones for Bredesen Center PhD students."
+>
+  <div class="container mx-auto px-4 py-10">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold text-gray-900">Bredesen Center PhD Timeline</h1>
+      <p class="text-xl text-gray-600 mt-2">
+        This timeline provides a general overview of key milestones and progression for students in the Bredesen Center PhD program. Remember that this is a general guide. It's crucial to maintain regular communication with your advisor and committee, refer to the official Bredesen Center handbook for precise requirements and deadlines, and actively participate in workshops and seminars.
+      </p>
+    </header>
+
+    {/* Wrap the timeline in a Card for consistent styling if desired, or directly display */}
+    <Card className="bg-white p-0 md:p-2 shadow-lg rounded-lg overflow-hidden"> 
+      {/* react-chrono often needs specific width/height on its direct container or itself */}
+      {/* The PhdTimelineDisplay component has style={{ width: '100%', minHeight: '600px' }} on its div */}
+      <PhdTimelineDisplay client:only="react" />
+    </Card>
+  </div>
+</Layout>

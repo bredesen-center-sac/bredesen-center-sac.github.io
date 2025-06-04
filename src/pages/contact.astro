@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact Us" description="Get in touch with the Student Advisory Council and the Bredesen Center.">
+  <div class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold text-center text-gray-900 mb-12">Contact Us</h1>
+    <div class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Student Advisory Council (SAC)</h2>
+        <p class="text-gray-700 text-lg mb-2">
+          <strong>Point of Contact:</strong> Alex Kiefer
+        </p>
+        <p class="text-gray-700 text-lg">
+          <strong>Email:</strong> <a href="mailto:akiefer3@utk.edu" class="text-ut-orange hover:underline">akiefer3@utk.edu</a>
+        </p>
+        {/* Add other SAC contact details or a small form here if needed in the future */}
+      </div>
+
+      <div class="bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-6">Bredesen Center</h2>
+        <p class="text-gray-700 text-lg mb-2">
+          310 Ferris Hall<br />
+          1508 Middle Dr<br />
+          Knoxville, TN 37996
+        </p>
+        <p class="text-gray-700 text-lg mb-2">
+          <strong>Phone:</strong> <a href="tel:865-974-7999" class="text-ut-orange hover:underline">865-974-7999</a>
+        </p>
+        <p class="text-gray-700 text-lg">
+          <strong>General Questions:</strong> <a href="mailto:bredesencenter@utk.edu" class="text-ut-orange hover:underline">bredesencenter@utk.edu</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Layout> 
