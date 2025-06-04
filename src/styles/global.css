@@ -1,57 +1,151 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
+/* 
+  shadcn/ui Theming for Tailwind v4 - Light Theme Example 
+  Based on: https://ui.shadcn.com/docs/tailwind-v4 
+*/
 :root {
-  /* UT Brand Colors */
-  --ut-orange: 22 100% 50%; /* #FF8200 - Tennessee Orange */
-  --ut-white: 0 0% 100%; /* #FFFFFF - White */
-  --ut-smokey: 0 0% 29%; /* #4B4B4B - Smokey Gray */
-  
-  /* Theme Colors using UT Brand */
-  --background: var(--ut-white);
-  --foreground: var(--ut-smokey);
-  --card: var(--ut-white);
-  --card-foreground: var(--ut-smokey);
-  --popover: var(--ut-white);
-  --popover-foreground: var(--ut-smokey);
-  --primary: var(--ut-orange);
-  --primary-foreground: var(--ut-white);
-  --secondary: 22 25% 95%; /* Light orange tint */
-  --secondary-foreground: var(--ut-smokey);
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 22 25% 95%;
-  --accent-foreground: var(--ut-smokey);
+  /* Base shadcn/ui variables - ensure these values are wrapped in hsl() */
+  --background: hsl(0 0% 100%);              /* White */
+  --foreground: hsl(0 0% 3.9%);              /* Default shadcn dark text */
+
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3.9%);
+ 
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3.9%);
+ 
+  /* UT Colors defined as HSL for shadcn/ui integration */
+  --ut-orange-hsl: hsl(30 100% 50%);        /* #FF8200 */
+  --ut-smokey-hsl: hsl(0 0% 29.4%);       /* #4B4B4B */
+  --ut-orange-light-hsl: hsl(30 100% 95%); /* Light UT Orange for accents, ~#FF8200 at 10% opacity */
+
+  /* Mapping shadcn/ui semantic colors to UT colors */
+  --primary: var(--ut-orange-hsl); 
+  --primary-foreground: hsl(0 0% 100%);    /* White text on UT Orange */
+ 
+  --secondary: hsl(0 0% 96.1%);            /* Light gray */
+  --secondary-foreground: hsl(0 0% 9%);    /* Dark gray text on light gray */
+ 
+  --muted: hsl(0 0% 96.1%);
+  --muted-foreground: hsl(0 0% 45.1%);     /* Medium gray text */
+ 
+  --accent: var(--ut-orange-light-hsl);
+  --accent-foreground: var(--ut-orange-hsl);
+
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: var(--ut-white);
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: var(--ut-orange);
-  --radius: 0.5rem;
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --border: hsl(0 0% 89.8%);               /* Light gray border */
+  --input: hsl(0 0% 89.8%);                /* Input field border */
+  --ring: var(--ut-orange-hsl);            /* Focus ring with UT Orange */
+ 
+  --radius: 0.5rem; /* Default border radius */
 }
 
+/* Example for dark theme if you implement one */
+/*
 .dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217.2 91.2% 59.8%;
-  --primary-foreground: 222.2 84% 4.9%;
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
+  --background: hsl(0 0% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  --primary: var(--ut-orange-hsl);
+  --primary-foreground: hsl(0 0% 98%); // Lighter text for dark mode primary
+
+  --secondary: hsl(0 0% 14.9%);
+  --secondary-foreground: hsl(0 0% 98%);
+
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 63.9%);
+
+  --accent: var(--ut-orange-light-hsl); // May need a darker accent for dark mode
+  --accent-foreground: var(--ut-orange-hsl);
+
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 224.3 76.3% 94.1%;
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: var(--ut-orange-hsl);
+}
+*/
+
+@theme inline {
+  /* Tailwind will use these to generate utility classes like bg-primary, text-accent-foreground etc. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Your custom named colors, now available as Tailwind utilities e.g. bg-ut-orange, text-ut-smokey */
+  --color-ut-orange: var(--ut-orange-hsl);
+  --color-ut-smokey: var(--ut-smokey-hsl);
 }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+/* Test to see if this CSS file is loading */
+.css-test {
+  background-color: lime !important;
+  color: black !important;
 }
+
+/* Basic body styling */
+body {
+  font-family: system-ui, sans-serif;
+}
+
+/* FullCalendar Theming */
+:root {
+  /* General Calendar Styles */
+  --fc-border-color: var(--color-ut-smokey);
+  --fc-today-bg-color: #FF820026; 
+  --fc-page-bg-color: white; 
+  
+  /* Event Styles */
+  --fc-event-bg-color: var(--color-ut-orange);
+  --fc-event-text-color: white; 
+  --fc-event-border-color: var(--color-ut-orange);
+
+  /* Button / Header Styles */
+  --fc-button-bg-color: var(--color-ut-orange);
+  --fc-button-text-color: white;
+  --fc-button-border-color: var(--color-ut-orange);
+  --fc-button-hover-bg-color: #E67500; 
+  --fc-button-hover-border-color: #E67500;
+  --fc-button-active-bg-color: #CC6600; 
+  --fc-button-active-border-color: #CC6600;
+}
+
+/*
+.fc .fc-button-primary {
+  background-color: var(--color-ut-orange);
+  border-color: var(--color-ut-orange);
+  color: white;
+}
+
+.fc .fc-button-primary:hover {
+  background-color: #E67500; // Darker orange
+  border-color: #E67500;
+}
+*/

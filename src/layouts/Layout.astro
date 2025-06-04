@@ -1,12 +1,13 @@
 ---
 import { SiteNavigation } from '../components/SiteNavigation';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Student Advisory Council - University of Tennessee" } = Astro.props;
+const { title, description = "Student Advisory Council - Bredesen Center" } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,7 +20,7 @@ const { title, description = "Student Advisory Council - University of Tennessee
     <meta name="generator" content={Astro.generator} />
     <title>{title} | Student Advisory Council - UT</title>
   </head>
-  <body>
+  <body class="bg-gray-50">
     <SiteNavigation client:load />
     <main>
       <slot />
@@ -27,6 +28,4 @@ const { title, description = "Student Advisory Council - University of Tennessee
   </body>
 </html>
 
-<style>
-  @import '../styles/global.css';
-</style> 
+ 

@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Separator } from '../components/ui/separator';
+---
+
+<Layout title="About SAC" description="Learn about the Student Advisory Council at the Bredesen Center - our mission, history, and how we advocate for student needs">
+  <div class="min-h-screen py-16">
+    <div class="container mx-auto px-4">
+      <!-- Hero Section -->
+      <section class="text-center mb-16">
+        <h1 class="text-5xl font-bold text-foreground mb-6">About the Student Advisory Council</h1>
+        <p class="text-xl text-muted-foreground max-w-4xl mx-auto">
+          The Student Advisory Council (SAC) is the voice of graduate students at the Bredesen Center, working to enhance the academic experience and foster a supportive community for all students.
+        </p>
+      </section>
+
+      <!-- Mission Section -->
+      <section class="mb-16">
+        <Card className="bg-gradient-to-r from-primary/5 to-background">
+          <CardHeader>
+            <CardTitle className="text-3xl text-center text-foreground">Our Mission</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p class="text-lg text-center text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              To serve as the primary liaison between Bredesen Center students and administration, advocating for student needs, 
+              facilitating communication, and creating opportunities for academic, professional, and personal growth within our interdisciplinary community.
+            </p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <!-- How SAC Works -->
+      <section class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-foreground mb-4">How We Work</h2>
+          <p class="text-muted-foreground max-w-3xl mx-auto">
+            SAC operates through a collaborative structure designed to ensure every student voice is heard and represented.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-primary text-xl">Student Representation</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                We represent students from all Bredesen Center focus areas, ensuring diverse perspectives in our advocacy efforts and decision-making processes.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-primary text-xl">Administration Liaison</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Regular meetings with faculty and staff to communicate student concerns, provide feedback on policies, and collaborate on program improvements.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-primary text-xl">Community Building</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Organizing events, workshops, and social activities that strengthen the bonds within our interdisciplinary graduate student community.
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <Separator className="my-12" />
+
+      <!-- Key Areas -->
+      <section class="mb-16">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-foreground mb-4">Our Key Areas of Focus</h2>
+          <p class="text-muted-foreground">
+            SAC addresses the diverse needs of graduate students across multiple dimensions of academic life.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">Academic Excellence</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Supporting research activities, academic resources, and professional development opportunities for interdisciplinary graduate students.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">Mental Health & Wellness</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Promoting work-life balance, stress management, and access to counseling and wellness resources for graduate students.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">Financial Support</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Advocating for competitive stipends, travel funding, and emergency financial assistance for students in need.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">Career Development</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Facilitating networking opportunities, industry connections, and career preparation for diverse post-graduation paths.
+              </CardDescription>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <CardTitle className="text-lg">Campus Life</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>
+                Improving campus facilities, organizing social events, and fostering a sense of community among graduate students.
+              </CardDescription>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <!-- Get Involved -->
+      <section class="text-center">
+        <Card className="bg-gradient-to-r from-primary/10 to-background p-8">
+          <CardHeader>
+            <CardTitle className="text-3xl text-foreground">Get Involved with SAC</CardTitle>
+            <CardDescription className="text-lg">
+              Your voice matters! There are many ways to engage with the Student Advisory Council and help shape the Bredesen Center experience.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+              <div class="text-left">
+                <h4 class="font-semibold text-foreground mb-2">Ways to Participate:</h4>
+                <ul class="text-muted-foreground space-y-1">
+                  <li>Attend our monthly general meetings</li>
+                  <li>Join committees focused on specific issues</li>
+                  <li>Run for elected positions</li>
+                  <li>Volunteer for events and initiatives</li>
+                </ul>
+              </div>
+              <div class="text-left">
+                <h4 class="font-semibold text-foreground mb-2">Stay Connected:</h4>
+                <ul class="text-muted-foreground space-y-1">
+                  <li>Follow our social media updates</li>
+                  <li>Subscribe to our newsletter</li>
+                  <li>Submit feedback and suggestions</li>
+                  <li>Attend our social events</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="flex gap-4 justify-center flex-wrap">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                Join SAC
+              </Button>
+              <Button variant="outline" size="lg">
+                Contact Us
+              </Button>
+              <Button variant="outline" size="lg">
+                View Meeting Minutes
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+ 

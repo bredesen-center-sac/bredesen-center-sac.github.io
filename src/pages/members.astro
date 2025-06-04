@@ -1,8 +1,10 @@
+---
 import Layout from '../layouts/Layout.astro';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
+import { MemberAvatar } from '../components/MemberAvatar';
+
 
 // Sample council members data
 const councilMembers = [
@@ -82,22 +84,23 @@ const councilMembers = [
 
 const executiveBoard = councilMembers.slice(0, 4);
 const representatives = councilMembers.slice(4);
+---
 
-<Layout title="Council Members" description="Meet the Student Advisory Council members representing your voice at the University of Tennessee">
+<Layout title="Council Members" description="Meet the Student Advisory Council members representing your voice at the Bredesen Center">
   <div class="min-h-screen py-16">
     <div class="container mx-auto px-4">
       <!-- Header -->
       <div class="text-center mb-16">
-        <h1 class="text-4xl font-bold text-ut-smokey mb-4">Meet Your Council</h1>
+        <h1 class="text-4xl font-bold text-foreground mb-4">Meet Your Council</h1>
         <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
-          The Student Advisory Council is composed of dedicated students who work tirelessly to represent your interests and improve campus life at the University of Tennessee.
+          The Student Advisory Council is composed of dedicated students who work tirelessly to represent your interests and improve campus life at the Bredesen Center.
         </p>
       </div>
 
       <!-- Executive Board -->
       <section class="mb-16">
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-ut-smokey mb-4">Executive Board</h2>
+          <h2 class="text-3xl font-bold text-foreground mb-4">Executive Board</h2>
           <p class="text-muted-foreground">
             The leadership team guiding our council's mission and initiatives.
           </p>
@@ -105,16 +108,17 @@ const representatives = councilMembers.slice(4);
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {executiveBoard.map((member) => (
-            <Card class="hover:shadow-lg transition-shadow">
-              <CardHeader class="text-center">
-                <Avatar class="mx-auto mb-4 w-20 h-20">
-                  <AvatarImage src="" alt={member.name} />
-                  <AvatarFallback class="bg-ut-orange text-white text-lg font-semibold">
-                    {member.initials}
-                  </AvatarFallback>
-                </Avatar>
-                <CardTitle class="text-ut-smokey">{member.name}</CardTitle>
-                <CardDescription class="text-ut-orange font-semibold">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <MemberAvatar 
+                  name={member.name} 
+                  initials={member.initials} 
+                  size="lg" 
+                  className="mx-auto mb-4"
+                  client:load 
+                />
+                <CardTitle className="text-foreground">{member.name}</CardTitle>
+                <CardDescription className="text-primary font-semibold">
                   {member.position}
                 </CardDescription>
                 <div class="text-sm text-muted-foreground">
@@ -123,7 +127,7 @@ const representatives = councilMembers.slice(4);
               </CardHeader>
               <CardContent>
                 <p class="text-sm text-muted-foreground mb-4">{member.bio}</p>
-                <Button variant="outline" size="sm" class="w-full">
+                <Button variant="outline" size="sm" className="w-full">
                   Contact {member.name.split(' ')[0]}
                 </Button>
               </CardContent>
@@ -132,12 +136,12 @@ const representatives = councilMembers.slice(4);
         </div>
       </section>
 
-      <Separator class="my-12" />
+      <Separator className="my-12" />
 
       <!-- Representatives -->
       <section>
         <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold text-ut-smokey mb-4">Council Representatives</h2>
+          <h2 class="text-3xl font-bold text-foreground mb-4">Council Representatives</h2>
           <p class="text-muted-foreground">
             Specialized representatives working on specific areas of student life and advocacy.
           </p>
@@ -145,16 +149,17 @@ const representatives = councilMembers.slice(4);
         
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {representatives.map((member) => (
-            <Card class="hover:shadow-lg transition-shadow">
-              <CardHeader class="text-center">
-                <Avatar class="mx-auto mb-4 w-16 h-16">
-                  <AvatarImage src="" alt={member.name} />
-                  <AvatarFallback class="bg-ut-orange text-white font-semibold">
-                    {member.initials}
-                  </AvatarFallback>
-                </Avatar>
-                <CardTitle class="text-ut-smokey text-lg">{member.name}</CardTitle>
-                <CardDescription class="text-ut-orange font-semibold">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader className="text-center">
+                <MemberAvatar 
+                  name={member.name} 
+                  initials={member.initials} 
+                  size="sm" 
+                  className="mx-auto mb-4"
+                  client:load 
+                />
+                <CardTitle className="text-foreground text-lg">{member.name}</CardTitle>
+                <CardDescription className="text-primary font-semibold">
                   {member.position}
                 </CardDescription>
                 <div class="text-sm text-muted-foreground">
@@ -163,7 +168,7 @@ const representatives = councilMembers.slice(4);
               </CardHeader>
               <CardContent>
                 <p class="text-sm text-muted-foreground mb-4">{member.bio}</p>
-                <Button variant="outline" size="sm" class="w-full">
+                <Button variant="outline" size="sm" className="w-full">
                   Contact {member.name.split(' ')[0]}
                 </Button>
               </CardContent>
@@ -174,16 +179,16 @@ const representatives = councilMembers.slice(4);
 
       <!-- Get Involved Section -->
       <section class="mt-16 text-center">
-        <Card class="bg-gradient-to-r from-ut-orange/10 to-background p-8">
+        <Card className="bg-gradient-to-r from-primary/10 to-background p-8">
           <CardHeader>
-            <CardTitle class="text-2xl text-ut-smokey">Interested in Joining SAC?</CardTitle>
-            <CardDescription class="text-lg">
+            <CardTitle className="text-2xl text-foreground">Interested in Joining SAC?</CardTitle>
+            <CardDescription className="text-lg">
               We're always looking for passionate students to join our team and make a difference on campus.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div class="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" class="bg-ut-orange hover:bg-ut-orange/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
                 Apply Now
               </Button>
               <Button variant="outline" size="lg">

@@ -56,7 +56,7 @@ export function SiteNavigation() {
           </a>
         </div>
         
-        <NavigationMenu>
+        <NavigationMenu dir="ltr" viewport={false}>
           <NavigationMenuList>
             <NavigationMenuItem>
               <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/">
@@ -77,9 +77,21 @@ export function SiteNavigation() {
             </NavigationMenuItem>
             
             <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/events">
+                Events & Calendar
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+            
+            <NavigationMenuItem>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/contact">
+                Contact Us
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
               <NavigationMenuTrigger>Student Resources</NavigationMenuTrigger>
               <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                   {components.map((component) => (
                     <ListItem
                       key={component.title}
@@ -93,17 +105,6 @@ export function SiteNavigation() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/events">
-                Events & Calendar
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            
-            <NavigationMenuItem>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/contact">
-                Contact Us
-              </NavigationMenuLink>
-            </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
         
@@ -126,7 +127,7 @@ export function SiteNavigation() {
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
+  React.ComponentRef<"a">,
   React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
