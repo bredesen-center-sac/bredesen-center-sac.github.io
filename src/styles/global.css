@@ -158,6 +158,12 @@ body {
   --fc-button-active-border-color: #CC6600;
 }
 
+/* Reduce font size of the calendar header title */
+.fc .fc-toolbar-title {
+  font-size: 1.15em; /* Adjust as needed, default is often larger like 1.5em or 1.75em */
+  line-height: 1.2; /* Adjust for better vertical alignment if needed */
+}
+
 /*
 .fc .fc-button-primary {
   background-color: var(--color-ut-orange);
