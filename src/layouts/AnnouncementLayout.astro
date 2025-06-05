@@ -1,0 +1,59 @@
+---
+import Layout from './Layout.astro'; // Main site layout
+import { Separator } from '@/components/ui/separator';
+
+// The frontmatter props are passed by Astro when rendering MDX through a layout
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    author?: string;
+    // any other frontmatter fields you might have
+  };
+}
+
+const { content } = Astro.props;
+const { title, pubDate, author, description } = content;
+---
+
+<Layout title={title} description={description}>
+  <article class="container mx-auto px-4 py-10 max-w-3xl">
+    <header class="mb-8">
+      <h1 class="text-4xl font-bold text-gray-900 mb-3">{title}</h1>
+      <div class="text-sm text-muted-foreground mb-2">
+        <span>Published on {pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        {author && <span class="mx-2">|</span> <span>By {author}</span>}
+      </div>
+      <Separator />
+    </header>
+    
+    <div class="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl max-w-none">
+      <slot /> {/* This is where the MDX content will be injected */} 
+    </div>
+
+  </article>
+</Layout>
+
+<style is:global>
+  /* 
+    Basic prose styling is now handled by the @tailwindcss/typography plugin 
+    via the .prose class applied to the div wrapping the <slot /> above.
+    You can customize the typography plugin's output in tailwind.config.mjs if needed,
+    or add specific overrides here like the link color below.
+  */
+  .prose a {
+    color: var(--ut-orange-hsl); /* Directly apply the CSS variable */
+    @apply hover:underline; /* Keep other utilities with @apply */
+  }
+
+  /* 
+    The following custom prose styles have been removed as they are handled by @tailwindcss/typography:
+    - h1-h6 styles
+    - p styles
+    - ul, ol, li styles
+    - blockquote styles
+    - pre, code styles
+    - img styles
+  */
+</style> 

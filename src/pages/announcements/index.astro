@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'; // Assuming CardFooter might be useful for dates/authors
+import { Button } from '@/components/ui/button';
+
+// Fetch all announcements
+const rawAnnouncements = await getCollection('announcements');
+
+const announcements = rawAnnouncements.sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Announcements" description="Latest news and updates from the Student Advisory Council.">
+  <div class="container mx-auto px-4 py-10">
+    <header class="mb-12 text-center">
+      <h1 class="text-4xl font-bold text-gray-900">Announcements</h1>
+      <p class="text-xl text-gray-600 mt-2">Stay updated with the latest news from the SAC.</p>
+    </header>
+
+    {announcements.length === 0 ? (
+      <div class="text-center text-gray-500">
+        <p class="text-xl">No announcements yet. Check back soon!</p>
+        <p class="text-sm mt-2">(If you just added an announcement, try restarting the dev server.)</p>
+      </div>
+    ) : (
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {announcements.map(announcement => (
+          <Card className="flex flex-col">
+            <CardHeader>
+              <CardTitle>{announcement.data.title}</CardTitle>
+              <CardDescription>{announcement.data.description}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              {/* Optionally, display a snippet of content here if needed, or keep it clean */}
+            </CardContent>
+            <CardFooter className="flex flex-col items-start gap-2 text-sm text-muted-foreground">
+              <div>
+                Published: {announcement.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric', month: 'long', day: 'numeric'
+                })}
+              </div>
+              {announcement.data.author && (
+                <div>By: {announcement.data.author}</div>
+              )}
+              <a href={`/announcements/${announcement.slug}/`} class="mt-2">
+                <Button variant="outline" size="sm">Read More &rarr;</Button>
+              </a>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+    )}
+  </div>
+</Layout> 

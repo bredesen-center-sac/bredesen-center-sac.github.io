@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import AnnouncementLayout from '../../layouts/AnnouncementLayout.astro';
+
+export async function getStaticPaths() {
+  const announcements = await getCollection('announcements');
+  return announcements.map(announcement => ({
+    params: { slug: announcement.slug },
+    props: { announcement }, // Pass the full announcement entry as a prop
+  }));
+}
+
+// The `announcement` prop is passed from getStaticPaths
+const { announcement } = Astro.props;
+const { Content } = await announcement.render(); // Get the rendered MDX content
+---
+
+<AnnouncementLayout content={announcement.data}>
+  <Content />
+</AnnouncementLayout> 

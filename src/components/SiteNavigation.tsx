@@ -29,26 +29,26 @@ const components: { title: string; href: string; description: string }[] = [
     href: "/resources/wellness",
     description: "Student health services, insurance, and wellness programs."
   },
-  {
-    title: "Financial Aid",
-    href: "/resources/financial",
-    description: "Scholarships, grants, financial planning, and emergency assistance."
-  },
-  {
-    title: "Career Services",
-    href: "/resources/career",
-    description: "Career counseling, internships, job placement, and professional development."
-  },
-  {
-    title: "Campus Resources",
-    href: "/resources/campus",
-    description: "Dining, housing, transportation, and other campus facilities."
-  },
-  {
-    title: "International Student Resources",
-    href: "/resources/international",
-    description: "Support, services, and information for international students."
-  }
+  // {
+  //   title: "Financial Aid",
+  //   href: "/resources/financial",
+  //   description: "Scholarships, grants, financial planning, and emergency assistance."
+  // },
+  // {
+  //   title: "Career Services",
+  //   href: "/resources/career",
+  //   description: "Career counseling, internships, job placement, and professional development."
+  // },
+  // {
+  //   title: "Campus Resources",
+  //   href: "/resources/campus",
+  //   description: "Dining, housing, transportation, and other campus facilities."
+  // },
+  // {
+  //   title: "International Student Resources",
+  //   href: "/resources/international",
+  //   description: "Support, services, and information for international students."
+  // }
 ]
 
 export function SiteNavigation() {
@@ -92,6 +92,11 @@ export function SiteNavigation() {
               <NavigationMenuItem>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/contact">
                   Contact Us
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} href="/announcements">
+                  Announcements
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -151,6 +156,7 @@ export function SiteNavigation() {
                 <a href="/members" className="block p-2 rounded-md hover:bg-accent hover:text-accent-foreground text-sm font-medium">Council Members</a>
                 <a href="/events" className="block p-2 rounded-md hover:bg-accent hover:text-accent-foreground text-sm font-medium">Events & Calendar</a>
                 <a href="/contact" className="block p-2 rounded-md hover:bg-accent hover:text-accent-foreground text-sm font-medium">Contact Us</a>
+                <a href="/announcements" className="block p-2 rounded-md hover:bg-accent hover:text-accent-foreground text-sm font-medium">Announcements</a>
                 
                 <div className="pt-3">
                   <h3 className="mb-1 px-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider">Student Resources</h3>

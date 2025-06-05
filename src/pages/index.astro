@@ -1,8 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { Button } from '../components/ui/button';
-import { Card, CardContent } from '../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../components/ui/card';
 import Calendar from '../components/Calendar';
+
+// Fetch announcements and get the latest one
+const allAnnouncements = (await getCollection('announcements')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const latestAnnouncement = allAnnouncements.length > 0 ? allAnnouncements[0] : null;
 ---
 
 <Layout title="Home" description="Student Advisory Council - Bredesen Center - Advocating for student needs and fostering campus community">
@@ -29,6 +36,38 @@ import Calendar from '../components/Calendar';
 				</div>
 			</div>
 		</section>
+
+		<!-- Latest Announcement Section -->
+		{latestAnnouncement && (
+			<section class="py-16 bg-gray-50">
+				<div class="container mx-auto px-4">
+					<h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Latest Announcement</h2>
+					<div class="max-w-2xl mx-auto">
+						<Card>
+							<CardHeader>
+								<CardTitle>{latestAnnouncement.data.title}</CardTitle>
+								<CardDescription>
+									Published: {latestAnnouncement.data.pubDate.toLocaleDateString('en-US', {
+										year: 'numeric', month: 'long', day: 'numeric'
+									})}
+									{latestAnnouncement.data.author && ` by ${latestAnnouncement.data.author}`}
+								</CardDescription>
+							</CardHeader>
+							<CardContent>
+								<p>{latestAnnouncement.data.description}</p>
+							</CardContent>
+							<CardFooter>
+								<a href={`/announcements/${latestAnnouncement.slug}/`}>
+									<Button variant="link" className="p-0 h-auto text-ut-orange hover:text-ut-orange/80">
+										Read Full Announcement &rarr;
+									</Button>
+								</a>
+							</CardFooter>
+						</Card>
+					</div>
+				</div>
+			</section>
+		)}
 
 		<!-- Calendar Section -->
 		<section class="py-16 bg-gray-50">

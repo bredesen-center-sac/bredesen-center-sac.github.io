@@ -50,18 +50,13 @@ export default function Calendar({
   const [initialTitleFormat, setInitialTitleFormat] = useState<Intl.DateTimeFormatOptions>(DESKTOP_TITLE_FORMAT);
 
   useEffect(() => {
-    console.log("[Calendar Effect] Hook started. Default View:", defaultView, "Default AR:", defaultAspectRatio, "Mobile AR:", mobileAspectRatio);
-
     const setCalendarOptions = () => {
       const calendarApi = calendarRef.current?.getApi();
       if (!calendarApi) {
-        console.log("[Calendar Effect] setCalendarOptions: calendarApi not ready.");
         return;
       }
-      console.log(`[Calendar Effect] setCalendarOptions called. window.innerWidth: ${window.innerWidth}, Current Calendar View: ${calendarApi.view.type}`);
 
       if (window.innerWidth < MOBILE_BREAKPOINT) {
-        console.log("[Calendar Effect] Applying MOBILE options. Target view: listWeek, Target AR:", mobileAspectRatio);
         if (calendarApi.view.type !== 'listWeek') {
           calendarApi.changeView('listWeek');
         }
@@ -69,7 +64,6 @@ export default function Calendar({
         calendarApi.setOption('aspectRatio', mobileAspectRatio);
         calendarApi.setOption('titleFormat', MOBILE_TITLE_FORMAT);
       } else {
-        console.log("[Calendar Effect] Applying DESKTOP options. Target view:", defaultView, "Target AR:", defaultAspectRatio);
         if (calendarApi.view.type !== defaultView) {
           calendarApi.changeView(defaultView);
         }
@@ -77,32 +71,26 @@ export default function Calendar({
         calendarApi.setOption('aspectRatio', defaultAspectRatio);
         calendarApi.setOption('titleFormat', DESKTOP_TITLE_FORMAT);
       }
-       console.log(`[Calendar Effect] Options supposedly set. New AR: ${calendarApi.getOption('aspectRatio')}, New View: ${calendarApi.view.type}`);
     };
     
-    console.log("[Calendar Effect] Setting initial options based on window width:", window.innerWidth);
     if (window.innerWidth < MOBILE_BREAKPOINT) {
       setInitialViewOption('listWeek');
       setInitialToolbarOptions(MOBILE_TOOLBAR);
       setInitialAspectRatio(mobileAspectRatio);
       setInitialTitleFormat(MOBILE_TITLE_FORMAT);
-      console.log("[Calendar Effect] Initial options set to MOBILE: listWeek, AR:", mobileAspectRatio);
     } else {
       setInitialViewOption(defaultView);
       setInitialToolbarOptions(DESKTOP_TOOLBAR);
       setInitialAspectRatio(defaultAspectRatio);
       setInitialTitleFormat(DESKTOP_TITLE_FORMAT);
-      console.log("[Calendar Effect] Initial options set to DESKTOP:", defaultView, ", AR:", defaultAspectRatio);
     }
 
     window.addEventListener('resize', setCalendarOptions);
     const timeoutId = setTimeout(() => {
-        console.log("[Calendar Effect] setTimeout: calling setCalendarOptions.");
         setCalendarOptions();
     }, 100); // Increased timeout slightly
 
     return () => {
-      console.log("[Calendar Effect] Cleanup: removing resize listener and timeout.");
       window.removeEventListener('resize', setCalendarOptions);
       clearTimeout(timeoutId);
     };
@@ -117,7 +105,6 @@ export default function Calendar({
       textColor: 'white'
     });
   }
-  console.log("[Calendar Render] Rendering FullCalendar. Initial View:", initialViewOption, "Initial AR:", initialAspectRatio);
 
   return (
     <div className="w-full">
@@ -141,12 +128,6 @@ export default function Calendar({
         selectMirror={true}
         dayMaxEvents={true}
         weekends={true}
-        select={(selectInfo) => {
-          console.log('Date selected:', selectInfo);
-        }}
-        eventClick={(clickInfo) => {
-          console.log('Event clicked:', clickInfo.event);
-        }}
         themeSystem="standard"
       />
     </div>
